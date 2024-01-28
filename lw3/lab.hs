@@ -29,9 +29,14 @@ mysubst list (x:xs) = if elem x list
                       then mysubst (delete x list) (x:xs)
                       else mysubst (list) xs
 
+-- 5 task
+
+getelementbyindex :: [[Int]] -> Int -> [Int]
+getelementbyindex list n = map (\x -> x !! n) list
 
 main = do
     print(listnums 10)
     print(secondlastlist [[1, 2], [1, 2, 3], [3, 4, 5, 6]])
     print(myunion [2, 3] [3, 2])
     print(mysubst [2, 1] [1])
+    print(getelementbyindex [[1, 2], [2, 3], [3, 4]] 1)
