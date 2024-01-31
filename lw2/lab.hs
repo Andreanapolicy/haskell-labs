@@ -25,9 +25,10 @@ listSumm (x:xs) (y:ys) = (x + y) : listSumm xs ys
 
 --4 task
 
-position :: Eq a => [a] -> a -> Int
-position [] _ = -1
-position list element = head [x | (x,y) <- zip [0..] list, y == element]
+position :: [Int] -> Int -> Int
+position list element | null matching = -1
+                      | otherwise = head matching
+                      where matching = [x | (x,y) <- zip [0..] list, y == element]
 
 
 -- 5 task
