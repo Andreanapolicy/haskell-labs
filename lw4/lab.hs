@@ -1,3 +1,4 @@
+import Data.Complex
 
 -- The 'intersperse' function takes an element and a list
 -- and `intersperses' that element between the elements of the list. For
@@ -36,6 +37,14 @@ myadjust function index list =
 myunlines :: [String] -> String
 myunlines [] = ""
 myunlines (x:xs) = x ++ "\n" ++ myunlines xs
+
+
+-- cis t is a complex value with magnitude 1
+-- and phase t
+-- функция принимает угол (в радианах) и возвращает 
+-- комплексное число, представляющее единичный вектор вектор с этим углом
+cis :: Floating a => a -> Complex a
+cis theta = cos theta :+ sin theta
 
 main = do
     print(myintersperse '-' "123")
