@@ -43,8 +43,8 @@ myunlines (x:xs) = x ++ "\n" ++ myunlines xs
 -- and phase t
 -- функция принимает угол (в радианах) и возвращает 
 -- комплексное число, представляющее единичный вектор вектор с этим углом
-cis :: Floating a => a -> Complex a
-cis theta = cos theta :+ sin theta
+mycis :: Floating a => a -> Complex a
+mycis theta = cos theta :+ sin theta
 
 main = do
     print(myintersperse '-' "123")
@@ -52,4 +52,4 @@ main = do
     print(myadjust (\x -> x + 1) 2 [1, 2, 3, 4, 5])
     print(myadjust (\_ -> "hello") 0 ["world", "apple", "orange"])
     print(myunlines ["world", "apple", "orange"])
-    
+    print(mycis 1)
