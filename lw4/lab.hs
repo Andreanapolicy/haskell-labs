@@ -28,9 +28,19 @@ myadjust function index list =
     let (before, after) = splitAt index list
     in before ++ [function (head after)] ++ tail after
 
+
+-- \n character to each input string, then concatenates the
+-- results
+-- >>> unlines ["Hello", "World", "!"]
+-- "Hello\nWorld\n!\n"
+myunlines :: [String] -> String
+myunlines [] = ""
+myunlines (x:xs) = x ++ "\n" ++ myunlines xs
+
 main = do
     print(myintersperse '-' "123")
 
     print(myadjust (\x -> x + 1) 2 [1, 2, 3, 4, 5])
     print(myadjust (\_ -> "hello") 0 ["world", "apple", "orange"])
+    print(myunlines ["world", "apple", "orange"])
     
