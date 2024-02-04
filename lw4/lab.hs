@@ -46,6 +46,15 @@ myunlines (x:xs) = x ++ "\n" ++ myunlines xs
 mycis :: Floating a => a -> Complex a
 mycis theta = cos theta :+ sin theta
 
+
+-- The list of values in the subrange defined by a bounding pair
+-- There is way like range - [1..5]
+myrange :: (Enum a, Ord a) => a -> a -> [a]
+myrange start end
+  | start > end = []
+  | otherwise = start : myrange (succ start) end
+
+
 main = do
     print(myintersperse '-' "123")
 
@@ -53,3 +62,4 @@ main = do
     print(myadjust (\_ -> "hello") 0 ["world", "apple", "orange"])
     print(myunlines ["world", "apple", "orange"])
     print(mycis 1)
+    print(myrange 1 5)
