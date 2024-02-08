@@ -57,9 +57,16 @@ myrange start end
 
 main = do
     print(myintersperse '-' "123")
+    print(myintersperse '-' "2")
 
     print(myadjust (\x -> x + 1) 2 [1, 2, 3, 4, 5])
     print(myadjust (\_ -> "hello") 0 ["world", "apple", "orange"])
+    
     print(myunlines ["world", "apple", "orange"])
+    print(myunlines ["1", "3"])
+    
     print(mycis 1)
+    print(mycis -1)
+
     print(myrange 1 5)
+    print(myrange 2 1)
