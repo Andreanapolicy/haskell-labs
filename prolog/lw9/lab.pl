@@ -47,11 +47,8 @@ cousin(X, Y) :- parent(A, X), parent(B, Y), sibling(A, B), different(X, Y).
 sibling(X, Y) :- parent(Z, X), parent(Z, Y), different(X, Y).
 
 % использование правил
-
-/*
-grandmother(X, bob).
-grandchild(X).
-sister(X, jim).
-aunt(X, tammy).
-cousin(X, bob).
-*/
+%?- grandmother(X, bob).
+%?- grandchild(X).
+%?- sister(X, jim).
+%?- aunt(X, tammy).
+%?- cousin(X, bob).
