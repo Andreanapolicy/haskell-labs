@@ -1,3 +1,5 @@
+% --- Task 1 ---
+
 % факты male
 male(bill).
 male(paul).
@@ -52,3 +54,32 @@ sibling(X, Y) :- parent(Z, X), parent(Z, Y), different(X, Y).
 %?- sister(X, jim).
 %?- aunt(X, tammy).
 %?- cousin(X, bob).
+
+% --- Task 2 ---
+
+likes(ellen, reading).
+likes(john, computers).
+likes(john, badminton).
+likes(john, photo).
+likes(john, reading).
+likes(leonard, badminton).
+likes(eric, swimming).
+likes(eric, reading).
+likes(eric, chess).
+likes(paul, swimming).
+
+% правило для тех, у кого 4 хобби
+person_with_four_hobbies(Person) :-
+  likes(Person, Hobby1),
+  likes(Person, Hobby2),
+  likes(Person, Hobby3),
+  likes(Person, Hobby4),
+  Hobby1 \= Hobby2, Hobby1 \= Hobby3, Hobby1 \= Hobby4,
+  Hobby2 \= Hobby3, Hobby2 \= Hobby4,
+  Hobby3 \= Hobby4.
+  
+% правило для тех, у кого одинаковое хобби
+same_hobby(Person1, Person2, Hobby) :-
+  likes(Person1, Hobby),
+  likes(Person2, Hobby),
+  Person1 \= Person2.
