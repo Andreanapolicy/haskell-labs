@@ -39,9 +39,6 @@ different(X, Y) :- X \= Y.
 % правило для тети
 aunt(X, Y) :- parent(Z, Y), sister(X, Z).
 
-% правило для тети
-aunt(X, Y) :- parent(Z, Y), sister(X, Z).
-
 % правило для кузина
 cousin(X, Y) :- parent(A, X), parent(B, Y), sibling(A, B), different(X, Y).
 
