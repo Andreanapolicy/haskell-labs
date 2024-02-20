@@ -28,7 +28,7 @@ parent(jim, bob).
 grandmother(X, Y) :- parent(X, Z), parent(Z, Y), female(X).
 
 % правило для поиска внука
-grandchild(X) :- parent(Y, X), parent(Z, Y), male(X).
+grandson(X, Y) :- parent(Y, Z), parent(Z, X), male(X).
 
 % правило для поиска сестер
 sister(X, Y) :- parent(Z, Y), parent(Z, X), female(X), different(X, Y).
@@ -47,7 +47,7 @@ sibling(X, Y) :- parent(Z, X), parent(Z, Y), different(X, Y).
 
 % использование правил
 %?- grandmother(X, bob).
-%?- grandchild(X).
+%?- grandchild(X, bob).
 %?- sister(X, jim).
 %?- aunt(X, tammy).
 %?- cousin(X, bob).
