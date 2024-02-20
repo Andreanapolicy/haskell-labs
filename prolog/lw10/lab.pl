@@ -32,3 +32,23 @@ cross(N, M, point(X, Y), NL, ML) :-
     linelength(N, NL),
     linelength(M, ML).
 
+% Задание 3
+
+perimetr(A, B, C, D, P, S) :-
+  seg(A, point(X11, Y11), point(X12, Y12)),
+  seg(B, point(X21, Y21), point(X22, Y22)),
+  seg(C, point(X31, Y31), point(X32, Y32)),
+  seg(D, point(X41, Y41), point(X42, Y42)),
+  A \= B, A \= C, A \= D,
+  B \= C, B \= D,
+  C \= D,
+  X11 > X31, Y21 > Y41, 
+  vertical(A), horiz(B), vertical(C), horiz(D),
+  cross(B, A, point(XBA, YBA), _, _),
+  cross(B, C, point(XBC, YBC), _, _),
+  cross(D, A, point(XDA, YDA), _, _),
+  cross(D, C, point(XDC, YDC), _, _),
+  PA is abs(YBA - YDA),
+  PB is abs(XBC - XBA),
+  P is 2 * PA + 2 * PB,
+  S is PA * PB.
