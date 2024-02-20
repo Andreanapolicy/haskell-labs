@@ -18,3 +18,17 @@ horiz(N) :- seg(N, point(X1, Y), point(X2, Y)), X1 < X2.
 % правило для определения номера вертикального отрезка
 vertical(N) :- seg(N, point(X, Y1), point(X, Y2)), Y1 < Y2.
 
+% Задание 2
+
+linelength(N, L) :- 
+  seg(N, point(X1, Y1), point(X2, Y2)),
+  sqrt((X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1), L).
+
+cross(N, M, point(X, Y), NL, ML) :-
+    seg(N, point(X1, Y), point(X2, Y)),
+    seg(M, point(X, Y1), point(X, Y2)),
+    between(Y1, Y2, Y),
+    between(X1, X2, X),
+    linelength(N, NL),
+    linelength(M, ML).
+
