@@ -18,12 +18,14 @@ horiz(N) :- seg(N, point(X1, Y), point(X2, Y)), X1 < X2.
 % правило для определения номера вертикального отрезка
 vertical(N) :- seg(N, point(X, Y1), point(X, Y2)), Y1 < Y2.
 
-% Задание 2
+% --- Task 2 ---
 
+% правило для определения длины линии
 linelength(N, L) :- 
   seg(N, point(X1, Y1), point(X2, Y2)),
   sqrt((X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1), L).
 
+% правило для определения пересечения
 cross(N, M, point(X, Y), NL, ML) :-
     seg(N, point(X1, Y), point(X2, Y)),
     seg(M, point(X, Y1), point(X, Y2)),
@@ -32,8 +34,9 @@ cross(N, M, point(X, Y), NL, ML) :-
     linelength(N, NL),
     linelength(M, ML).
 
-% Задание 3
+% --- Task 3 ---
 
+% правило для определения пересечения
 perimetr(A, B, C, D, P, S) :-
   seg(A, point(X11, Y11), point(X12, Y12)),
   seg(B, point(X21, Y21), point(X22, Y22)),
