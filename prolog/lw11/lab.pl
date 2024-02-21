@@ -38,3 +38,16 @@ split([H|T], L2, [H|L3]) :-
 split([H|T], [H|L2], L3) :- 
     1 is H mod 2, 
     split(T, L2, L3).
+
+% --- Task 7 ---
+
+repeat3(L1, L2) :- 
+    append([First | Middle], [Last], L1), 
+    append([Last, Last, Last | Middle], [First, First, First], L2).
+
+% --- Task 8 ---
+
+combi([], L2, L2).
+combi(L1, [], L1).
+combi([H1|T1], [H2|T2], [H1,H2|T3]) :- 
+    combi(T1, T2, T3).
