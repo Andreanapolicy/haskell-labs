@@ -32,10 +32,10 @@ double([H|T], [H, H | T2]) :-
 % --- Task 6 ---
 
 split([], [], []).
-split([H|T], L2, [H|L3]) :- 
+split([H|T], [H|L2], L3) :- 
     0 is H mod 2, 
     split(T, L2, L3).
-split([H|T], [H|L2], L3) :- 
+split([H|T], L2, [H|L3]) :- 
     1 is H mod 2, 
     split(T, L2, L3).
 
