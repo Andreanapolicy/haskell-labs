@@ -157,3 +157,16 @@ merge([H|T], L, [H|T1]) :- merge(T, L, T1).
 build_list(L1, L2, L3) :-
     merge(L1, L2, L),
     unique(L, L3).
+
+% --- Task 4.7 ---
+
+count([], _, 0).
+count([X|T], X, N) :- count(T, X, N1), N is N1 + 1.
+count([X1|T], X, N) :- X1 \= X, count(T, X, N).
+
+most_oft([], []).
+most_oft([H|T], X) :-
+    most_oft(T, X1),
+    count([H|T], H, N1),
+    count([H|T], X1, N2),
+    (N1 > N2 -> X = H ; X = X1).
