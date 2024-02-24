@@ -65,3 +65,42 @@ sort_shell :-
     shellsort(List, Sorted), 
     write('answer: '), 
     write(Sorted).
+
+
+% --- Task 4.4.1 ---
+
+min(X,Y,X):-X=<Y.
+min(X,Y,Y):-X>Y.
+
+remove(_, [], []).
+remove(X, [X|T], T1):-remove(X, T, T1).
+remove(X, [H|T], [H|T1]):-X\=H, remove(X, T, T1).
+
+sort_4_1([], []).
+sort_4_1(List, [M|Sorted]):-min(M, List, _), remove(M, List, L1), sort_4_1(L1, Sorted).
+
+sort_4_1 :-
+    write('list? '), 
+    read(List),
+    sort_4_1(List, Sorted), 
+    write('answer: '), 
+    write(Sorted).
+
+% --- Task 4.4.2 ---
+
+sort_4_2 :-
+    write('list? '), 
+    read(List), 
+    sort_4_2(List, Sorted), 
+    write('answer: '), 
+    write(Sorted).
+  
+b_sort([], Acc, Acc).
+b_sort([X|T], Acc, Sorted) :- bubble(X, T, NT, Max), b_sort(NT, [Max|Acc], Sorted).
+  
+bubble(X, [], [], X).
+bubble(X, [Y|T], [Y|NT], Max) :- X > Y, bubble(X, T, NT, Max).
+bubble(X, [Y|T], [X|NT], Max) :- X =< Y, bubble(Y, T, NT, Max).
+
+sort_4_2(List, Sorted) :- b_sort(List, [], Sorted).
+
