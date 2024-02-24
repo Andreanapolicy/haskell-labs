@@ -104,3 +104,56 @@ bubble(X, [Y|T], [X|NT], Max) :- X =< Y, bubble(Y, T, NT, Max).
 
 sort_4_2(List, Sorted) :- b_sort(List, [], Sorted).
 
+% --- Task 4.4.3 ---
+
+sort_4_3 :-
+    write('list? '), 
+    read(List), 
+    sort_4_3(List, Sorted), 
+    write('answer: '), 
+    write(Sorted).
+
+insert(X, [], [X]).
+insert(X, [H|T], [X,H|T]):-X =< H.
+insert(X, [H|T], [H|T1]):-X > H, insert(X, T, T1).
+
+sort_4_3([], []).
+sort_4_3([H|T], Sorted) :- sort_4_3(T, SortedT), insert(H, SortedT, Sorted).
+
+% --- Task 4.4.4 ---
+
+sort_4_4 :-
+    write('list? '), 
+    read(List), 
+    sort_4_4(List, Sorted), 
+    write('answer: '), 
+    write(Sorted).
+
+sort_4_4([], []).
+
+sort_4_4([X|Xs], Sorted) :-
+    divide(Xs, X, Left, Right),
+    sort_4_4(Left, SortedLeft),
+    sort_4_4(Right, SortedRight),
+    append(SortedLeft, [X|SortedRight], Sorted).
+
+divide([], _, [], []).
+divide([X|Xs], Pivot, [X|Ls], Rs) :- X =< Pivot, divide(Xs, Pivot, Ls, Rs).
+divide([X|Xs], Pivot, Ls, [X|Rs]) :- X > Pivot, divide(Xs, Pivot, Ls, Rs).
+
+% --- Task 4.5 ---
+
+unique([], []).
+unique([H|T], [H|T1]) :- delete_all(T, H, T2), unique(T2, T1).
+
+delete_all([], _, []).
+delete_all([H|T], H, T1) :- delete_all(T, H, T1).
+delete_all([H|T], Z, [H|T1]) :- H \= Z, delete_all(T, Z, T1).
+
+merge([], L, L).
+merge([H|T], L, [H|T1]) :- merge(T, L, T1).
+
+% Метод для объединения двух списков
+build_list(L1, L2, L3) :-
+    merge(L1, L2, L),
+    unique(L, L3).
